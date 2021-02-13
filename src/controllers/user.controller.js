@@ -30,7 +30,11 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
     Users.find()
         .then(users => {
-            res.send(users);
+            res.json({
+                total_count:users.length,
+                items:users
+            })
+            //res.send(users);
         }).catch(err => {
             res.status(500).send({
                 message: err.message || "Some error occurred while retrieving notes."
