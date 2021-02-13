@@ -1,22 +1,20 @@
 {
-  "name": "com.eleve.app",
+  "name": "NetlifyAPI",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"./node_modules/.bin/netlify-lambda serve src",
+    "build":"./node_modules/.bin/netlify-lambda build src"
   },
-  "keywords": [
-    "[\"expess\"",
-    "\"RestAPI\"",
-    "\"Samyuta\"",
-    "\"Depression\"]"
-  ],
-  "author": "\"Darshan\"",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "mongoose": "^5.10.7"
+    "mongoose": "^5.11.16",
+    "netlify-lambda": "^2.0.3",
+    "serverless-http": "^2.7.0"
   }
 }
