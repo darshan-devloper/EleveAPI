@@ -29,7 +29,7 @@ exports.create = (req, res) => {
 // Retrieve and return all users from the database.
 exports.findAll = (req, res) => {
     Users.find()
-        .skip((req.query.page-1)*10)
+        .skip(req.query.page*10)
         .limit(10)
         .then(users => {
             res.json({
