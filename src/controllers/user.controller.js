@@ -28,20 +28,33 @@ exports.create = (req, res) => {
 
 // Retrieve and return all users from the database.
 exports.findAll = (req, res) => {
+
+    var total_count = 0;
     Users.find()
-        .skip(req.query.page*10)
-        .limit(10)
         .then(users => {
-            res.json({
-                total_count:users.length,
-                items:users
-            })
+            total_count = users.length;
+            console.log(total_count);
+            Users.find()
+            .skip(req.query.page*10)
+            .limit(10)
+            .then(users => {
+                res.json({
+                    total_count:total_count,
+                    items:users
+                })
+                //res.send(users);
+            }).catch(err => {
+                res.status(500).send({
+                    message: err.message || "Some error occurred while retrieving notes."
+                });
+            });
             //res.send(users);
         }).catch(err => {
             res.status(500).send({
                 message: err.message || "Some error occurred while retrieving notes."
             });
         });
+    
 
 };
 
